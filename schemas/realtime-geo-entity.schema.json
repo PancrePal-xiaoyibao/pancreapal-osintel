@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pposintel.local/schemas/realtime-geo-entity.schema.json",
+  "title": "Realtime Geo Entity",
+  "description": "Render-ready realtime geospatial entity for the pposintel globe stream. It intentionally follows the simple WorldWideView flat GeoEntity[] shape.",
+  "type": "object",
+  "required": [
+    "id",
+    "pluginId",
+    "entityType",
+    "latitude",
+    "longitude",
+    "timestamp",
+    "label",
+    "source"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pluginId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "entityType": {
+      "type": "string",
+      "enum": [
+        "region",
+        "country",
+        "city",
+        "center",
+        "event",
+        "trial",
+        "source"
+      ]
+    },
+    "latitude": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "altitude": {
+      "type": "number",
+      "default": 0
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "layer": {
+      "type": "string",
+      "enum": [
+        "treatment-centers",
+        "academic-activity",
+        "trial-activity",
+        "patient-pulse",
+        "complication-support",
+        "source-coverage",
+        "breaking-events"
+      ]
+    },
+    "heat": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "dataQuality": {
+      "type": "string",
+      "enum": [
+        "public",
+        "estimated",
+        "mixed",
+        "unverified"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "type",
+        "url",
+        "accessedAt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "accessedAt": {
+          "type": "string",
+          "format": "date"
+        },
+        "verificationStatus": {
+          "type": "string"
+        }
+      }
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "country": {
+          "type": "string"
+        },
+        "regionKey": {
+          "type": "string"
+        },
+        "countryKey": {
+          "type": "string"
+        },
+        "cityKey": {
+          "type": "string"
+        },
+        "provinceState": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "centerKey": {
+          "type": "string"
+        },
+        "hospitalName": {
+          "type": "string"
+        },
+        "centerName": {
+          "type": "string"
+        },
+        "candidateSignalRank": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "capabilityTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "complicationSupportTags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scaleSummary": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
