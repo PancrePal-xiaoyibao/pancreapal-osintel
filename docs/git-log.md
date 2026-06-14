@@ -32,3 +32,5 @@
 - Impact: realtime seeder now emits 85 entities: 3 regions, 7 countries, 27 cities, and 48 centers.
 - Commit `ceed2d5` created for Task 6, Configuration Contracts: `feat: add app configuration contracts`.
 - Impact: added app configuration schema, demo config, and tests for model providers, RAG, WeChat monitor, translation, local profile, saved centers, elderly mode, PIN gate, and report safety.
+- Commit `9acc100` created for Task 8, Validation Guardrails: `test: enforce source-safe volume fields`.
+- Impact: added no-naked-volume guardrail for atlas fixture and future app/components/core TypeScript files.

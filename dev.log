@@ -32,3 +32,4 @@
 2026-06-14: Completed Task 4, Supabase Global Atlas Read Model. Added local migration/documentation, constrained latest-intelligence public reads to approved events, and committed `277080e`; migration was not applied remotely.
 2026-06-14: Completed Task 5, Realtime Region/Country Projection. Extended realtime schema/validator/seeder/runtime test to emit region, country, city, and center projections; committed `58d5825`.
 2026-06-14: Completed Task 6, Configuration Contracts. Added safe placeholder-only demo config and schema for model/RAG/source/WeChat/profile/report settings; committed `ceed2d5`.
+2026-06-14: Completed Task 8, Validation Guardrails. Added `validate:guardrails` script to block naked volume fields in atlas fixture and future frontend/core files; committed `9acc100`.

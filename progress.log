@@ -107,3 +107,9 @@
 - Verification: `node tests/app_configuration_contracts.test.mjs`
 - Review: quality blockers fixed by constraining secret refs, bounding WeChat monitor polling, and structuring RAG diagnostics with severity and timestamp validation.
 - Next: Task 8, Validation Guardrails.
+2026-06-14: Task 8 Validation Guardrails completed.
+- Commit: `9acc100 test: enforce source-safe volume fields`
+- Files: `scripts/validate_no_naked_volume_fields.mjs`, `tests/global_resource_contracts.test.mjs`, `package.json`
+- Verification: `node scripts/validate_no_naked_volume_fields.mjs`, `node tests/global_resource_contracts.test.mjs`, `npm run validate:guardrails`
+- Review: quality blocker fixed by scanning future `app/**/*.tsx` as well as `components/**/*.tsx`, `core/**/*.ts`, and atlas JSON; token matching is intentionally zero-tolerance in product files.
+- Next: Task 7, Frontend Shell Scaffold.
