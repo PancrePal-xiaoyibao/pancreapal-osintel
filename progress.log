@@ -94,3 +94,10 @@
 - Verification: static SQL review plus `node tests/global_resource_contracts.test.mjs`, `node scripts/validate_realtime_seeders.mjs`, `node tests/realtime_runtime.test.mjs`
 - Review: quality blocker fixed by constraining `center_latest_intelligence` public reads to approved linked events, adding check constraints for `coverage_status`, `event_scope`, and `entity_type`, and requiring unique center/event/scope relationships.
 - Next: Task 5, Realtime Region/Country Projection.
+2026-06-14: Task 5 Realtime Region/Country Projection completed.
+- Commit: `58d5825 feat: emit global atlas realtime projections`
+- Files: `schemas/realtime-geo-entity.schema.json`, `scripts/validate_realtime_seeders.mjs`, `realtime/seeders/pancreatic-centers/seeder.mjs`, `tests/realtime_runtime.test.mjs`
+- Output: 85 realtime entities: 3 regions, 7 countries, 27 cities, 48 centers.
+- Verification: `node scripts/validate_realtime_seeders.mjs`, `node tests/realtime_runtime.test.mjs`, `node scripts/run_realtime_seeder.mjs --plugin pancreatic-centers --once`
+- Review: aggregate entities use public-signal heat aggregation, centers include `regionKey`, and empty aggregate groups are skipped instead of rendered at fallback coordinates.
+- Next: Task 6, Configuration Contracts.

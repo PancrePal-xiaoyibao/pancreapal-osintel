@@ -28,3 +28,5 @@
 - Impact: added deterministic builder and generated `global_resource_atlas_2026-06-13.json` with 3 regions, 7 countries, 27 cities, and 48 centers.
 - Commit `277080e` created for Task 4, Supabase Global Atlas Read Model: `feat: add global atlas supabase read model`.
 - Impact: added local migration `009_global_resource_atlas_schema.sql` and read-model documentation; migration was not applied remotely.
+- Commit `58d5825` created for Task 5, Realtime Region/Country Projection: `feat: emit global atlas realtime projections`.
+- Impact: realtime seeder now emits 85 entities: 3 regions, 7 countries, 27 cities, and 48 centers.

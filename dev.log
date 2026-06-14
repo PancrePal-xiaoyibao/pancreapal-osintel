@@ -30,3 +30,4 @@
 2026-06-14: Completed Task 2, Global Atlas JSON Contracts. Added strict global atlas schema and tests; fixed quality issue where nested DTOs were under-typed and `VolumeMetric` was unsatisfiable; committed `2df80e0`.
 2026-06-14: Completed Task 3, Global Atlas Fixture Builder. Added builder, generated global atlas fixture, fixed coverage status misclassification for `unverified*` statuses, and committed `6948044`.
 2026-06-14: Completed Task 4, Supabase Global Atlas Read Model. Added local migration/documentation, constrained latest-intelligence public reads to approved events, and committed `277080e`; migration was not applied remotely.
+2026-06-14: Completed Task 5, Realtime Region/Country Projection. Extended realtime schema/validator/seeder/runtime test to emit region, country, city, and center projections; committed `58d5825`.
