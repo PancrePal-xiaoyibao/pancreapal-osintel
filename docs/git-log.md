@@ -26,3 +26,5 @@
 - Impact: added `schemas/global-resource-atlas.schema.json`, contract tests, and `data/global_resource_atlas/.gitkeep`.
 - Commit `6948044` created for Task 3, Global Atlas Fixture Builder: `feat: build global resource atlas fixture`.
 - Impact: added deterministic builder and generated `global_resource_atlas_2026-06-13.json` with 3 regions, 7 countries, 27 cities, and 48 centers.
+- Commit `277080e` created for Task 4, Supabase Global Atlas Read Model: `feat: add global atlas supabase read model`.
+- Impact: added local migration `009_global_resource_atlas_schema.sql` and read-model documentation; migration was not applied remotely.

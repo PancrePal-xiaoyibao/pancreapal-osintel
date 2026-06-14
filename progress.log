@@ -87,3 +87,10 @@
 - Verification: `node scripts/build_global_resource_atlas.mjs`, `node tests/global_resource_contracts.test.mjs`, `node scripts/validate_realtime_seeders.mjs`, `node tests/realtime_runtime.test.mjs`
 - Review: quality blocker fixed by checking `unverified` before `verified`, downgrading source-empty centers to `seed`, and adding semantic invariants for evidence, metrics, and sorting.
 - Next: Task 4, Supabase Global Atlas Read Model.
+2026-06-14: Task 4 Supabase Global Atlas Read Model completed.
+- Commit: `277080e feat: add global atlas supabase read model`
+- Files: `supabase/migrations/009_global_resource_atlas_schema.sql`, `docs/supabase-global-resource-atlas.md`
+- Remote status: not applied remotely.
+- Verification: static SQL review plus `node tests/global_resource_contracts.test.mjs`, `node scripts/validate_realtime_seeders.mjs`, `node tests/realtime_runtime.test.mjs`
+- Review: quality blocker fixed by constraining `center_latest_intelligence` public reads to approved linked events, adding check constraints for `coverage_status`, `event_scope`, and `entity_type`, and requiring unique center/event/scope relationships.
+- Next: Task 5, Realtime Region/Country Projection.
