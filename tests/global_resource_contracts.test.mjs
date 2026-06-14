@@ -94,6 +94,25 @@ function assertInvalid(sample, expectedMessage) {
   });
 }
 
+function findForbiddenPayloadKeys(value, forbiddenKeys, path = "$", matches = []) {
+  if (Array.isArray(value)) {
+    value.forEach((item, index) => findForbiddenPayloadKeys(item, forbiddenKeys, `${path}[${index}]`, matches));
+    return matches;
+  }
+
+  if (value !== null && typeof value === "object") {
+    for (const [key, childValue] of Object.entries(value)) {
+      const childPath = `${path}.${key}`;
+      if (forbiddenKeys.includes(key)) {
+        matches.push(childPath);
+      }
+      findForbiddenPayloadKeys(childValue, forbiddenKeys, childPath, matches);
+    }
+  }
+
+  return matches;
+}
+
 const sourceEvidence = {
   sourceKey: "src_demo",
   title: "Demo source",
@@ -192,6 +211,12 @@ assert.ok(centers.every((center) => Array.isArray(center.volumeMetrics)));
 validateNode(schema, fixture);
 
 const forbiddenCenterKeys = ["surgeryVolume", "patientVolume", "annualPatients", "annualSurgeries"];
+assert.deepEqual(
+  findForbiddenPayloadKeys(fixture, forbiddenCenterKeys),
+  [],
+  "generated global atlas fixture must not expose naked volume fields anywhere in the JSON payload"
+);
+
 for (const center of centers) {
   for (const key of forbiddenCenterKeys) {
     assert.ok(!Object.hasOwn(center, key), `center ${center.centerKey} must not expose ${key}`);

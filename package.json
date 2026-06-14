@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate:guardrails": "node scripts/validate_no_naked_volume_fields.mjs"
+  }
+}
