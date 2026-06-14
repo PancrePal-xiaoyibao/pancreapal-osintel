@@ -1,0 +1,147 @@
+{
+  "modelProviders": [
+    {
+      "providerKey": "demo-openai-compatible",
+      "label": "Demo OpenAI-Compatible Provider",
+      "baseUrl": "https://example.invalid/v1",
+      "apiKey": {
+        "kind": "placeholder",
+        "value": "PLACEHOLDER_MODEL_PROVIDER_KEY"
+      },
+      "defaultModel": "demo-medical-review-model",
+      "enabled": false
+    }
+  ],
+  "ragConnectors": [
+    {
+      "connectorKey": "demo-supabase-rag",
+      "label": "Demo Supabase RAG",
+      "type": "supabase",
+      "endpoint": "https://example.invalid/supabase",
+      "apiKey": {
+        "kind": "placeholder",
+        "value": "PLACEHOLDER_RAG_CONNECTOR_KEY"
+      },
+      "status": "not_configured",
+      "lastTestedAt": null,
+      "diagnostics": {
+        "severity": "info",
+        "lastMessage": "Demo connector is not configured.",
+        "lastCheckedAt": null,
+        "lastErrorCode": null,
+        "documentCount": 0,
+        "latencyMs": null
+      }
+    },
+    {
+      "connectorKey": "demo-local-vector-store",
+      "label": "Demo Local Vector Store",
+      "type": "local_vector_store",
+      "endpoint": "file://./data/demo-vector-store",
+      "apiKey": {
+        "kind": "placeholder",
+        "value": "PLACEHOLDER_LOCAL_RAG_KEY"
+      },
+      "status": "disabled",
+      "lastTestedAt": "2026-06-14T00:00:00Z",
+      "diagnostics": {
+        "severity": "info",
+        "lastMessage": "Disabled demo connector for contract validation only.",
+        "lastCheckedAt": "2026-06-14T00:00:00Z",
+        "lastErrorCode": null,
+        "documentCount": 0,
+        "latencyMs": 0
+      }
+    }
+  ],
+  "sourceFilters": {
+    "regions": [
+      "asia-pacific",
+      "north-america",
+      "europe"
+    ],
+    "countries": [
+      "china",
+      "united-states",
+      "japan",
+      "germany",
+      "united-kingdom",
+      "france",
+      "italy"
+    ],
+    "sourceTypes": [
+      "hospital_public_page",
+      "registry",
+      "publication",
+      "wechat_public_account"
+    ],
+    "verificationStatuses": [
+      "seed",
+      "partial",
+      "verified"
+    ],
+    "freshnessDays": 90
+  },
+  "wechatMonitor": {
+    "enabled": false,
+    "apiKey": {
+      "kind": "placeholder",
+      "value": "PLACEHOLDER_MPTEXT_KEY"
+    },
+    "pollIntervalMinutes": 1440,
+    "accountFilters": [
+      "demo-pancreatic-center-account"
+    ],
+    "keywordFilters": [
+      "pancreatic cancer",
+      "clinical trial",
+      "multidisciplinary team"
+    ]
+  },
+  "translation": {
+    "enabled": true,
+    "sourceLanguage": "auto",
+    "targetLanguage": "zh-CN",
+    "providerKey": "demo-openai-compatible",
+    "preserveMedicalTerms": true
+  },
+  "patientLocalProfile": {
+    "enabled": true,
+    "storageMode": "local_only",
+    "fields": [
+      "ageRange",
+      "diagnosisStage",
+      "treatmentHistory",
+      "caregiverNotes"
+    ],
+    "redactionRequired": true
+  },
+  "savedCenters": [
+    {
+      "centerKey": "demo_center_shanghai",
+      "label": "Demo Shanghai Center",
+      "country": "China",
+      "city": "Shanghai",
+      "savedAt": "2026-06-14T00:00:00Z"
+    }
+  ],
+  "elderlyMode": {
+    "enabled": true,
+    "fontScale": 1.2,
+    "highContrast": true,
+    "simplifiedCopy": true
+  },
+  "pinGate": {
+    "enabled": false,
+    "mode": "disabled",
+    "pinHash": null,
+    "lockAfterAttempts": 5
+  },
+  "reportSafety": {
+    "requireSourceEvidence": true,
+    "blockDiagnosis": true,
+    "blockTreatmentInstruction": true,
+    "blockUnsupportedEfficacyClaims": true,
+    "requireExportReview": true
+  }
+}
