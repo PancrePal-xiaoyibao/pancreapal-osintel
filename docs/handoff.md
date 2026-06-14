@@ -113,3 +113,25 @@
 - Do not start by copying Horizon. Horizon is the UI/product reference; WorldWideView remains the realtime globe architecture reference.
 - Keep Supabase/source records authoritative and treat `RealtimeGeoEntity` as render projection only.
 - Guardrail remains mandatory: no naked `surgeryVolume`, `patientVolume`, `annualPatients`, or `annualSurgeries` fields.
+
+## Task 7 Frontend Shell Handoff
+
+- Commit: `0a78212 feat: scaffold global atlas frontend shell`.
+- Frontend entrypoints:
+  - `app/layout.tsx`
+  - `app/page.tsx`
+  - `app/globals.css`
+  - `components/shell/WarRoomShell.tsx`
+  - `components/modules/resources/GlobalResourceAtlas.tsx`
+- Domain types: `core/domain/globalResourceTypes.ts`.
+- The current shell is a static fixture view, not a Supabase-connected or Cesium globe implementation yet.
+- Data source: `data/global_resource_atlas/global_resource_atlas_2026-06-13.json`.
+- UI path: War Room shell -> global atlas hero/stats -> region board -> country rows -> center profile panel -> latest-intelligence rail.
+- Fixture boundary: `GlobalResourceAtlas.tsx` validates minimum region/country/city/center arrays before treating the fixture as `GlobalResourceAtlasSnapshot`.
+- Next 16 typecheck command is `npm run typecheck`, which runs `next typegen && tsc --noEmit`; this is required because Next writes generated route type imports into `next-env.d.ts`.
+- Build command: `npm run build`.
+- Guardrail command: `npm run validate:guardrails`.
+- Verified on 2026-06-14: guardrails, global contracts, app configuration contracts, realtime runtime test, typecheck, and production build all passed.
+- Dependency note: `npm install` created `package-lock.json` and reported 2 moderate audit findings. Do not run `npm audit fix --force` without a separate dependency-risk review.
+- `.gitignore` now excludes `node_modules/`, `.next/`, and `tsconfig.tsbuildinfo`.
+- Next implementation should connect this shell to Supabase read models or add Cesium/Resium only after preserving the current source-safe `VolumeMetric` and latest-intelligence contracts.

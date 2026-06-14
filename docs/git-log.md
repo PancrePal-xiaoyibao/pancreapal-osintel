@@ -34,3 +34,5 @@
 - Impact: added app configuration schema, demo config, and tests for model providers, RAG, WeChat monitor, translation, local profile, saved centers, elderly mode, PIN gate, and report safety.
 - Commit `9acc100` created for Task 8, Validation Guardrails: `test: enforce source-safe volume fields`.
 - Impact: added no-naked-volume guardrail for atlas fixture and future app/components/core TypeScript files.
+- Commit `0a78212` created for Task 7, Frontend Shell Scaffold: `feat: scaffold global atlas frontend shell`.
+- Impact: added Next.js App Router shell, static global atlas views, typed frontend domain models, Next 16 typegen/typecheck setup, lockfile, and frontend generated-artifact ignores.

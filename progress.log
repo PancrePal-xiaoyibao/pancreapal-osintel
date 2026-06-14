@@ -113,3 +113,11 @@
 - Verification: `node scripts/validate_no_naked_volume_fields.mjs`, `node tests/global_resource_contracts.test.mjs`, `npm run validate:guardrails`
 - Review: quality blocker fixed by scanning future `app/**/*.tsx` as well as `components/**/*.tsx`, `core/**/*.ts`, and atlas JSON; token matching is intentionally zero-tolerance in product files.
 - Next: Task 7, Frontend Shell Scaffold.
+2026-06-14: Task 7 Frontend Shell Scaffold completed.
+- Commit: `0a78212 feat: scaffold global atlas frontend shell`
+- Files: `.gitignore`, `package.json`, `package-lock.json`, `tsconfig.json`, `next-env.d.ts`, `app/`, `components/`, `core/domain/globalResourceTypes.ts`
+- Output: Next.js App Router static shell renders War Room header/navigation/index strip, global atlas summary, region cards, country rows, and a center profile with reserved latest-intelligence rail.
+- Verification: `npm run validate:guardrails`, `node tests/global_resource_contracts.test.mjs`, `node tests/app_configuration_contracts.test.mjs`, `node tests/realtime_runtime.test.mjs`, `npm run typecheck`, and `npm run build`.
+- Review: spec approved; quality issues fixed by adding project-scoped `tsconfig`, runtime fixture boundary validation, empty center state, button-based nav with matching CSS, and Next 16 `next typegen && tsc --noEmit`.
+- Note: `npm install` completed and generated `package-lock.json`; npm audit reported 2 moderate vulnerabilities. No forced audit fix was applied because it can introduce breaking dependency changes.
+- Next: Task 9, Final Integration Documentation.
