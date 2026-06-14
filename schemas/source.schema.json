@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pposintel.local/schemas/source.schema.json",
+  "title": "Source",
+  "type": "object",
+  "required": [
+    "source_id",
+    "name",
+    "source_type",
+    "url",
+    "region",
+    "authority_level",
+    "collection_method",
+    "status"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^src_[a-z0-9_-]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "guideline",
+        "trial_registry",
+        "meeting",
+        "paper",
+        "regulator",
+        "company_news",
+        "hospital_news",
+        "wechat_public",
+        "video",
+        "patient_community",
+        "manual"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "region": {
+      "type": "string"
+    },
+    "authority_level": {
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "collection_method": {
+      "enum": ["api", "rss", "crawl", "manual", "mcp", "search"]
+    },
+    "update_cadence": {
+      "type": ["string", "null"]
+    },
+    "copyright_notes": {
+      "type": ["string", "null"]
+    },
+    "privacy_notes": {
+      "type": ["string", "null"]
+    },
+    "status": {
+      "enum": ["candidate", "active", "paused", "blocked"]
+    }
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,7 @@
+interface:
+  display_name: "Supabase Keepalive"
+  short_description: "Keep Supabase free projects active"
+  default_prompt: "Use $supabase-keepalive to validate and schedule the Supabase keepalive check."
+policy:
+  allow_implicit_invocation: true
+

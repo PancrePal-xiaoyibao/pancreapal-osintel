@@ -1,0 +1,27 @@
+source_id,name,source_type,url,region,authority_level,collection_method,update_cadence,status,notes
+src_clinicaltrials_gov,ClinicalTrials.gov,trial_registry,https://clinicaltrials.gov/,US,high,api,daily,candidate,Trial status and results source
+src_pubmed,PubMed,paper,https://pubmed.ncbi.nlm.nih.gov/,Global,high,api,daily,candidate,Biomedical literature metadata
+src_nccn,NCCN,guideline,https://www.nccn.org/guidelines,US,high,manual,monthly,candidate,Do not redistribute guideline full text
+src_asco,ASCO,meeting,https://www.asco.org/abstracts,US,high,crawl,weekly,candidate,Meeting abstracts and oncology updates
+src_asco_post,ASCO Post,paper,https://ascopost.com/,US,medium,crawl,weekly,candidate,Professional reporting
+src_aacr,AACR,meeting,https://www.aacr.org/meeting/,US,high,crawl,weekly,candidate,Meetings and pancreatic cancer conferences
+src_esmo,ESMO,guideline,https://www.esmo.org/guidelines,Europe,high,crawl,weekly,candidate,Guideline updates and congress materials
+src_annals_oncology,Annals of Oncology,paper,https://www.annalsofoncology.org/,Europe,high,crawl,weekly,candidate,High-value oncology papers
+src_fda,FDA,regulator,https://www.fda.gov/drugs,US,high,crawl,daily,candidate,Approvals safety and labels
+src_ema,EMA,regulator,https://www.ema.europa.eu/,Europe,high,crawl,daily,candidate,European regulatory updates
+src_nmpa,NMPA,regulator,https://www.nmpa.gov.cn/,China,high,crawl,daily,candidate,Chinese regulatory updates
+src_cde,CDE,regulator,https://www.cde.org.cn/,China,high,crawl,daily,candidate,Chinese drug review and trial signals
+src_chictr,Chinese Clinical Trial Registry,trial_registry,https://www.chictr.org.cn/,China,high,crawl,weekly,candidate,Chinese trial registry
+src_who_ictrp,WHO ICTRP,trial_registry,https://trialsearch.who.int/,Global,high,manual,weekly,candidate,Global trial aggregation
+src_csco,CSCO,guideline,https://www.csco.org.cn/,China,high,crawl,weekly,candidate,Guidelines and meetings
+src_caca,CACA,guideline,https://www.caca.org.cn/,China,high,crawl,weekly,candidate,Consensus and integrated diagnosis guidelines
+src_nci,NCI,regulator,https://www.cancer.gov/types/pancreatic,US,high,crawl,weekly,candidate,Patient and professional pancreatic cancer information
+src_eviq,eviQ,guideline,https://www.eviq.org.au/,Australia,high,crawl,monthly,candidate,Treatment protocols and patient information
+src_revolution_medicines,Revolution Medicines,company_news,https://ir.revmed.com/news-releases,US,medium,crawl,weekly,candidate,RAS pipeline updates
+src_merck,Merck,company_news,https://www.merck.com/news/,US,medium,crawl,weekly,candidate,Pipeline and regulatory updates
+src_roche,Roche,company_news,https://www.roche.com/media/releases,Europe,medium,crawl,weekly,candidate,Pipeline and regulatory updates
+src_astrazeneca,AstraZeneca,company_news,https://www.astrazeneca.com/media-centre/press-releases.html,Europe,medium,crawl,weekly,candidate,Pipeline and regulatory updates
+src_hengrui,Hengrui Medicine,company_news,https://www.hrs.com.cn/,China,medium,crawl,weekly,candidate,China oncology pipeline
+src_innovent,Innovent,company_news,https://www.innoventbio.com/,China,medium,crawl,weekly,candidate,China oncology pipeline
+src_kelun_biotech,Kelun-Biotech,company_news,https://www.kelun-biotech.com/,China,medium,crawl,weekly,candidate,ADC pipeline
+

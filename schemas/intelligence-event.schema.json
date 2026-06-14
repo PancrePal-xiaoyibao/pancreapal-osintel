@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pposintel.local/schemas/intelligence-event.schema.json",
+  "title": "IntelligenceEvent",
+  "type": "object",
+  "required": [
+    "event_id",
+    "title",
+    "source",
+    "observed_at",
+    "source_type",
+    "region",
+    "topics",
+    "evidence_level",
+    "patient_relevance",
+    "summary_professional",
+    "summary_patient",
+    "uncertainty",
+    "review_status"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^evt_[0-9]{8}_[a-z0-9_-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "$ref": "#/$defs/sourceRef"
+    },
+    "published_at": {
+      "type": ["string", "null"],
+      "format": "date"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_type": {
+      "enum": [
+        "guideline",
+        "trial_registry",
+        "meeting",
+        "paper",
+        "regulator",
+        "company_news",
+        "hospital_news",
+        "wechat_public",
+        "video",
+        "patient_signal",
+        "manual"
+      ]
+    },
+    "region": {
+      "type": "string"
+    },
+    "disease": {
+      "type": ["string", "null"]
+    },
+    "stage": {
+      "type": ["string", "null"]
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "entities": {
+      "$ref": "#/$defs/entities"
+    },
+    "evidence_level": {
+      "enum": [
+        "guideline_update",
+        "regulatory_action",
+        "phase_3_positive",
+        "phase_2_signal",
+        "early_research",
+        "trial_status_change",
+        "expert_education",
+        "patient_signal",
+        "unknown"
+      ]
+    },
+    "impact_score": {
+      "type": ["number", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "patient_relevance": {
+      "enum": ["high", "medium", "low", "unknown"]
+    },
+    "summary_professional": {
+      "type": "string"
+    },
+    "summary_patient": {
+      "type": "string"
+    },
+    "potential_value": {
+      "type": ["string", "null"]
+    },
+    "potential_risk": {
+      "type": ["string", "null"]
+    },
+    "doctor_consultation_ready": {
+      "type": "boolean",
+      "default": false
+    },
+    "uncertainty": {
+      "type": "string"
+    },
+    "review_status": {
+      "enum": [
+        "raw",
+        "parsed",
+        "machine_reviewed",
+        "needs_human_review",
+        "approved",
+        "rejected"
+      ]
+    }
+  },
+  "$defs": {
+    "sourceRef": {
+      "type": "object",
+      "required": ["source_id", "name", "url"],
+      "properties": {
+        "source_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "entities": {
+      "type": "object",
+      "properties": {
+        "drugs": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "targets": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "companies": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "institutions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        },
+        "trials": {
+          "type": "array",
+          "items": { "type": "string" },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

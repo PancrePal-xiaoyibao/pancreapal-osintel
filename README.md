@@ -2,6 +2,8 @@
 
 Pancreas Intel War Room is an OSINT-style intelligence workspace for pancreatic tumor treatment tracking. The product goal is to turn public clinical signals into traceable, patient-readable, doctor-checkable intelligence.
 
+![Pancreas Intel War Room demo](https://picgo-1302991947.cos.ap-guangzhou.myqcloud.com/images/20260614081724657.png)
+
 The current first product slice is a global pancreatic treatment resource atlas inside a Horizon-style War Room:
 
 - Global -> Region -> Country -> City -> Pancreatic Center -> Latest Intelligence.
@@ -11,14 +13,14 @@ The current first product slice is a global pancreatic treatment resource atlas 
 
 ## Current Baseline
 
-- Design authority index: [docs/design-doc-index.md](/Users/qinxiaoqiang/Downloads/pposintel/docs/design-doc-index.md)
-- Historical long-form design background: [design.md](/Users/qinxiaoqiang/Downloads/pposintel/design.md)
-- External reference list: [source_reference.md](/Users/qinxiaoqiang/Downloads/pposintel/source_reference.md)
-- Development memory: [memory.md](/Users/qinxiaoqiang/Downloads/pposintel/memory.md)
-- Progress log: [docs/progress.md](/Users/qinxiaoqiang/Downloads/pposintel/docs/progress.md)
-- City treatment resource spec: [hospital_source.md](/Users/qinxiaoqiang/Downloads/pposintel/hospital_source.md)
-- WeChat MP source spec: [docs/wechat-mp-source-requirements.md](/Users/qinxiaoqiang/Downloads/pposintel/docs/wechat-mp-source-requirements.md)
-- Active design-development plan: [docs/plans/2026-06-14-global-resource-atlas-implementation.md](/Users/qinxiaoqiang/Downloads/pposintel/docs/plans/2026-06-14-global-resource-atlas-implementation.md)
+- Design authority index: [docs/design-doc-index.md](docs/design-doc-index.md)
+- Historical long-form design background: [design.md](design.md)
+- External reference list: [source_reference.md](source_reference.md)
+- Development memory: [memory.md](memory.md)
+- Progress log: [docs/progress.md](docs/progress.md)
+- City treatment resource spec: [hospital_source.md](hospital_source.md)
+- WeChat MP source spec: [docs/wechat-mp-source-requirements.md](docs/wechat-mp-source-requirements.md)
+- Active design-development plan: [docs/plans/2026-06-14-global-resource-atlas-implementation.md](docs/plans/2026-06-14-global-resource-atlas-implementation.md)
 
 ## Working Directories
 
