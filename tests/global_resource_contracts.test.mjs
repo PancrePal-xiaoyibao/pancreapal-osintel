@@ -173,6 +173,70 @@ const validFixture = {
 
 validateNode(schema, validFixture);
 
+const fixture = JSON.parse(await readFile("data/global_resource_atlas/global_resource_atlas_2026-06-13.json", "utf8"));
+
+assert.equal(fixture.snapshotKey, "global_resource_atlas_2026-06-13");
+assert.ok(fixture.regions.length >= 3);
+assert.ok(fixture.regions.some((region) => region.regionKey === "asia-pacific"));
+assert.ok(fixture.regions.some((region) => region.regionKey === "north-america"));
+assert.ok(fixture.regions.some((region) => region.regionKey === "europe"));
+
+const centers = fixture.regions.flatMap((region) =>
+  region.countries.flatMap((country) => country.cities.flatMap((city) => city.centers))
+);
+
+assert.ok(centers.length >= 48);
+assert.ok(centers.every((center) => Array.isArray(center.latestIntelligence)));
+assert.ok(centers.every((center) => Array.isArray(center.volumeMetrics)));
+
+validateNode(schema, fixture);
+
+const forbiddenCenterKeys = ["surgeryVolume", "patientVolume", "annualPatients", "annualSurgeries"];
+for (const center of centers) {
+  for (const key of forbiddenCenterKeys) {
+    assert.ok(!Object.hasOwn(center, key), `center ${center.centerKey} must not expose ${key}`);
+  }
+}
+
+assert.ok(
+  centers.every((center) => center.coverageStatus !== "verified" || center.sourceEvidence.length > 0),
+  "verified centers must preserve at least one source evidence reference"
+);
+
+assert.ok(
+  centers.every(
+    (center) =>
+      !String(center.verificationStatus ?? "").toLowerCase().includes("unverified") ||
+      center.coverageStatus !== "verified"
+  ),
+  "unverified source status must not be upgraded to verified coverage"
+);
+
+assert.ok(
+  centers.every((center) =>
+    center.volumeMetrics.every(
+      (metric) =>
+        Array.isArray(metric.sourceUrls) &&
+        metric.sourceUrls.length > 0 &&
+        metric.sourceUrls.every((url) => typeof url === "string" && url.length > 0)
+    )
+  ),
+  "every emitted volume metric must retain at least one source URL"
+);
+
+for (const region of fixture.regions) {
+  const countryNames = region.countries.map((country) => country.name);
+  assert.deepEqual(countryNames, [...countryNames].sort((left, right) => left.localeCompare(right, "en")));
+  for (const country of region.countries) {
+    const cityNames = country.cities.map((city) => city.name);
+    assert.deepEqual(cityNames, [...cityNames].sort((left, right) => left.localeCompare(right, "en")));
+    for (const city of country.cities) {
+      const centerNames = city.centers.map((center) => center.name);
+      assert.deepEqual(centerNames, [...centerNames].sort((left, right) => left.localeCompare(right, "en")));
+    }
+  }
+}
+
 assertInvalid(
   {
     ...validFixture,
