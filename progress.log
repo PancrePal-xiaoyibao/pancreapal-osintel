@@ -101,3 +101,9 @@
 - Verification: `node scripts/validate_realtime_seeders.mjs`, `node tests/realtime_runtime.test.mjs`, `node scripts/run_realtime_seeder.mjs --plugin pancreatic-centers --once`
 - Review: aggregate entities use public-signal heat aggregation, centers include `regionKey`, and empty aggregate groups are skipped instead of rendered at fallback coordinates.
 - Next: Task 6, Configuration Contracts.
+2026-06-14: Task 6 Configuration Contracts completed.
+- Commit: `ceed2d5 feat: add app configuration contracts`
+- Files: `schemas/app-configuration.schema.json`, `data/config/demo_app_config.json`, `tests/app_configuration_contracts.test.mjs`
+- Verification: `node tests/app_configuration_contracts.test.mjs`
+- Review: quality blockers fixed by constraining secret refs, bounding WeChat monitor polling, and structuring RAG diagnostics with severity and timestamp validation.
+- Next: Task 8, Validation Guardrails.
