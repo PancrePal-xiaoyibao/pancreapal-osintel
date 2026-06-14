@@ -1,0 +1,76 @@
+# Progress Log
+
+2026-06-13: Project initialized; baseline docs created.
+2026-06-13: Converted design.md into executable project baseline.
+- Current phase: Phase 0, project baseline and data contracts.
+- Completed: documentation structure, data contracts, source seeds, report template, package placeholders.
+- Next: validate schemas, expand source registry toward 100 sources, and implement a manual event-to-brief flow.
+2026-06-13: Added AI-MDT and 3D Globe module evaluations.
+- AI-MDT is included as a review layer after intelligence event creation.
+- 3D Globe is included as the primary dashboard entrypoint with country-city-center drilldown.
+- Supabase quick demo migrations are prepared locally; remote application is pending target project confirmation.
+2026-06-13: Supabase quick demo deployed.
+- Project: `pposintel` / `dngmthqacazkqhtykyvy`
+- URL: `https://dngmthqacazkqhtykyvy.supabase.co`
+- Applied migrations: `001` to `006`
+- Verification: RLS enabled, seed rows present, security advisor clean.
+2026-06-13: Supabase keepalive script added and verified.
+- Script: `scripts/supabase_keepalive.sh`
+- Query: read-only REST request against `sources`
+- Suggested schedule: every 2-3 days.
+2026-06-13: Supabase keepalive converted into skill.
+- Skill path: `skills/supabase-keepalive/`
+- Validation: `quick_validate.py` passed.
+- Live script: `bash skills/supabase-keepalive/scripts/keepalive.sh` passed.
+2026-06-13: Supabase keepalive config generalized.
+- Supports `--env-file`, `PPOSINTEL_KEEPALIVE_ENV_FILE`, project-specific overrides, framework aliases, and legacy anon-key aliases.
+- Rejects `sb_secret_*` keys.
+- Validation: Vite/Nuxt/project override dry-runs passed; `quick_validate.py` passed; live keepalive passed.
+2026-06-13: City pancreatic treatment resource requirement optimized.
+- Source file: `hospital_source.md`
+- Result: structured requirement for city drilldown resources, department/public-account fields, heat logic, data quality, compliance boundary, MVP scope, and acceptance criteria.
+- Integrated docs: `docs/dashboard-spec.md`, `docs/data-model.md`, `docs/decision-log.md`, `docs/progress.md`, `docs/handoff.md`.
+2026-06-13: Hospital source and WeChat MP source requirements expanded.
+- `hospital_source.md`: added Jiangsu, Sichuan, Zhejiang, Fujian, Hebei, Beijing, Tianjin, Chongqing, Shanghai key center leads; added peritoneal metastasis; added surgery-volume source verification rules.
+- `docs/wechat-mp-source-requirements.md`: added MPText API endpoint, auth header, local monitor project reuse plan, data model, call flow, scoring rules, and code requirements.
+- Security: added `.gitignore` for local env files and kept `MP_API_KEY` as an empty placeholder in `.env.example`.
+2026-06-14: Realtime globe architecture aligned with WorldWideView reference.
+- Reference clone: `references/worldwideview` is ignored and read-only.
+- Added `docs/architecture-realtime-globe.md`, `docs/adr/2026-06-14-realtime-globe-pipeline.md`, `schemas/realtime-geo-entity.schema.json`, and `realtime/seeders/pancreatic-centers/seeder.mjs`.
+- Decision: adopt `seeder.mjs -> stream payload -> DataBus -> store -> Cesium primitive renderer -> animation loop`; do not adopt full marketplace complexity in Phase 0.
+2026-06-14: Realtime runtime skeleton implemented.
+- Added `realtime/runtime/` with DataBus, WsClient, GlobeStore, camera presets, primitive projection, and animation-loop skeleton.
+- Added `scripts/validate_realtime_seeders.mjs`, `scripts/run_realtime_seeder.mjs`, and `tests/realtime_runtime.test.mjs`.
+- Verification: `pancreatic-centers` emits 48 valid entities; runner stdout is one stream JSON message; animation loop projects visible Shanghai-view points.
+2026-06-14: Frontend architecture draft added.
+- Existing frontend design draft was present but distributed across dashboard/product docs.
+- Added `docs/frontend-architecture-draft.md` with stack, module structure, state slices, data flow, 3D globe rendering rules, and implementation phases.
+- Updated `docs/architecture.md`, `docs/architecture-realtime-globe.md`, and `docs/dashboard-spec.md` to reference the new frontend architecture.
+2026-06-14: Horizon demo accepted as primary UI/product reference.
+- Reference path: `references/horizon-workspace`.
+- Added `docs/horizon-demo-reference-analysis.md`.
+- Decision: Horizon drives static UI/product/module design; WorldWideView drives realtime globe animation and stream architecture.
+- Caveat: do not copy Horizon's giant single `App.tsx` or naked surgery/patient volume numbers into production.
+2026-06-14: Two-round PRD/function/architecture review completed.
+- Review doc: `docs/prd-architecture-review-2026-06-14.md`
+- Round 1: fixed internal inconsistency across MVP, roadmap, indicators, compliance, data model, AI-MDT, and geography scope.
+- Round 2: compared Horizon and WorldWideView; retained Horizon product shell and WorldWideView realtime/globe spine.
+- Updated docs: product brief, MVP roadmap, index system, compliance boundaries, data model, dashboard spec, module-3D evaluation, and module-3AI evaluation.
+- Next: add source-safe frontend fixture validation, then implement Phase 1A War Room shell or create the next Supabase migration for city resources.
+2026-06-14: Global pancreatic resource atlas correction completed.
+- Review doc: `docs/design-review-global-resource-scope-2026-06-14.md`
+- Decision: first pancreatic-center resource module is global, not China-first.
+- Required drilldown: Region -> Country -> City -> Center -> Latest Intelligence.
+- Horizon gap: useful city/UI prototype, but missing global resource IA and center-linked latest intelligence.
+- Data basis: current local snapshot already covers China, US, Japan, and Europe.
+- Next: add global resource DTO validation and Supabase schema/read-model migration.
+2026-06-14: Global Resource Atlas Implementation Plan created.
+- Plan path: `docs/plans/2026-06-14-global-resource-atlas-implementation.md`
+- Stages: design authority index, JSON contracts, fixture builder, Supabase read model, realtime projections, configuration contracts, guardrails, frontend shell, final documentation.
+- Execution rule: contracts and guardrails must precede frontend work to avoid Horizon mock leakage and naked volume fields.
+2026-06-14: Task 1 Design Authority Index completed.
+- Commit: `ab628f6 docs: add design authority index`
+- Files: `README.md`, `docs/design-doc-index.md`, `docs/handoff.md`, `docs/progress.md`
+- Verification: `rg -n "Global -> Region -> Country -> City -> Pancreatic Center" README.md docs/design-doc-index.md docs/handoff.md docs/progress.md`
+- Review: spec approved; quality blocker fixed by making README point to `docs/design-doc-index.md` and marking `design.md` as historical background.
+- Next: Task 2, Global Atlas JSON Contracts.

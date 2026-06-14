@@ -1,0 +1,29 @@
+# Development Log
+
+2026-06-13: Initialized project scaffold.
+2026-06-13: Second-round refinement based on design.md.
+- Added local AGENTS.md with project workflow and safety rules.
+- Added README.md as the project entrypoint.
+- Added docs for product brief, MVP roadmap, architecture, data model, agent workflow, index system, compliance boundaries, and dashboard spec.
+- Added JSON schemas for source records and intelligence events.
+- Added first seed source CSV and daily brief template.
+- Added source package and tests directory placeholders.
+2026-06-13: Evaluated `module_3AI_ver.md` and integrated it as AI-MDT Intelligence Review.
+2026-06-13: Evaluated `3D_dashbroad.md` and integrated it as 3D Globe War Room.
+2026-06-13: Added Supabase quick demo migrations for core intelligence data, AI-MDT review, geography, treatment centers, map layers, and seed records.
+2026-06-13: Queried Supabase MCP. Visible organizations are `samqin123's Org` and `samqin123's projects`; no login email or user UUID was exposed.
+2026-06-13: Created Supabase project `pposintel` (`dngmthqacazkqhtykyvy`) in `samqin123's Org`.
+2026-06-13: Applied migrations `001_core_schema` through `006_move_vector_extension`; verified security advisor has no current lints.
+2026-06-13: Added `scripts/supabase_keepalive.sh` and verified it against Supabase with a read-only `sources` query.
+2026-06-13: Converted Supabase keepalive automation into project-local skill `skills/supabase-keepalive`; quick validation and live keepalive both passed.
+2026-06-13: Generalized Supabase keepalive environment resolution for Next.js, Vite, Nuxt, Expo, generic Supabase variables, explicit env files, and project-specific overrides; dry-run aliases, skill validation, and live keepalive passed.
+2026-06-13: Optimized `hospital_source.md` into a structured City Pancreatic Treatment Resource Layer requirement and integrated it into dashboard and data-model docs.
+2026-06-13: Updated `hospital_source.md` with new province/city pancreatic center leads, peritoneal metastasis support, and surgery-volume verification rules; added WeChat MP source requirements using MPText API patterns from the local monitor project.
+2026-06-14: Evaluated `arch_reference1.md` against local `references/worldwideview`; added realtime globe architecture docs, ADR, `RealtimeGeoEntity` schema, and `pancreatic-centers` seeder.mjs.
+2026-06-14: Added dependency-free realtime runtime boundary (`DataBus`, `WsClient`, `GlobeStore`, camera presets, primitive projection, animation loop), seeder runner, seeder validator, and runtime smoke test.
+2026-06-14: Added frontend architecture draft based on WorldWideView reference stack and updated architecture/dashboard docs with frontend module structure and target data flow.
+2026-06-14: Analyzed `references/horizon-workspace` and accepted it as the primary product/UI reference; added `docs/horizon-demo-reference-analysis.md` and updated frontend/dashboard/architecture/data-model docs.
+2026-06-14: Completed two-round PRD/function/architecture review; added `docs/prd-architecture-review-2026-06-14.md` and aligned product brief, roadmap, index system, compliance boundaries, data model, dashboard spec, 3D module evaluation, and AI-MDT evaluation.
+2026-06-14: Corrected pancreatic-center resource scope to global first; added `docs/design-review-global-resource-scope-2026-06-14.md` and updated core docs to require Region -> Country -> City -> Center -> Latest Intelligence drilldown.
+2026-06-14: Created and registered design-development implementation plan `docs/plans/2026-06-14-global-resource-atlas-implementation.md` for the global pancreatic treatment resource atlas.
+2026-06-14: Completed Task 1, Design Authority Index. Created `docs/design-doc-index.md`, updated README/progress/handoff source-of-truth language, passed spec and quality reviews, and committed `ab628f6`.

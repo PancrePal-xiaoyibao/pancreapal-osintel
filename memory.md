@@ -1,0 +1,37 @@
+# Project Memory
+
+- Project: pposintel
+- Goal: Build an OSINT-style intelligence dashboard for pancreatic tumor tracking and analysis.
+- Baseline comparison: /Users/qinxiaoqiang/Downloads/graphify
+- Current state: initializing repository structure and core logs.
+- Product framing: not a news aggregator; a global pancreatic tumor treatment intelligence workspace.
+- MVP focus: daily intelligence brief, War Room dashboard prototype, five indices, source registry, traceable evidence.
+- Current phase: Phase 0 data contracts and documentation baseline.
+- Core docs added: product brief, MVP roadmap, architecture, data model, agent workflow, index system, compliance boundaries, dashboard spec.
+- Core schemas added: source and intelligence event JSON schema.
+- Seed data added: data/sources/seed_sources.csv.
+- Report template added: templates/reports/daily-brief.md.
+- AI-MDT decision: include as post-event review layer with review_tasks, model_reviews, and consensus_reports.
+- 3D Globe decision: include as dashboard entrypoint with Global -> Region -> Country -> City -> Treatment Center drilldown.
+- Supabase decision: use hosted Supabase quick demo, but only apply migrations to a dedicated `pposintel` project or explicitly confirmed target.
+- Supabase MCP account clues: organizations visible are `samqin123's Org` (`whwucpkvgsssxlpzwbgw`) and `samqin123's projects` (`vercel_icfg_AdLdMm50fjxWZrDEJ6slzztk`); active visible project is `xiaohongka` (`ivyzhfcggneaktkvzvuz`).
+- Supabase deployed project: `pposintel`, project ID `dngmthqacazkqhtykyvy`, URL `https://dngmthqacazkqhtykyvy.supabase.co`, publishable key `sb_publishable_a6iatxhYWYY6Xpnjy6awkA_ZH_em8V6`.
+- Supabase migrations applied: `001_core_schema`, `002_seed_demo`, `003_geography_globe_schema`, `004_seed_geography_demo`, `005_advisor_fixes`, `006_move_vector_extension`.
+- Supabase keepalive: `scripts/supabase_keepalive.sh` performs read-only REST query to `sources`; verified on 2026-06-13. Suggested schedule every 2-3 days because current Supabase docs indicate free projects may pause after 1 week inactivity.
+- Supabase keepalive skill: project-local skill at `skills/supabase-keepalive/`; root wrapper `scripts/supabase_keepalive.sh` delegates to the skill script.
+- Supabase keepalive env strategy: explicit shell env and `--env-file` / `PPOSINTEL_KEEPALIVE_ENV_FILE` have source priority; supported aliases cover Next.js, Vite, Nuxt, Expo, generic `SUPABASE_*`, and legacy anon keys. Prefer `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` or project-specific `PPOSINTEL_KEEPALIVE_SUPABASE_KEY`; never use service role or `sb_secret_*` keys.
+- City pancreatic treatment resource layer: `hospital_source.md` defines city drilldown resources for surgery, medical oncology, trials, complication support, nutrition, palliative care, psychology, public accounts, heat snapshots, and evidence links. Heat is public signal strength, not hospital ranking or medical quality.
+- Hospital source expansion: first-priority leads now include Jiangsu Provincial People's Hospital, West China Hospital, Zhejiang/Fujian/Hebei province nodes, Beijing, Tianjin, Chongqing, and Shanghai centers including Fudan Cancer Center, Ruijin, Changhai, Huashan, Zhongshan, and Shanghai First People's Hospital. Surgery-volume metrics must preserve period, definition, source URL, source type, and verification status.
+- WeChat MP source module: `docs/wechat-mp-source-requirements.md` uses MPText API patterns from `/Users/qinxiaoqiang/Downloads/采集/wechat-mp-monitor`; real `MP_API_KEY` must stay in local env files, not versioned docs.
+- Realtime globe architecture: `arch_reference1.md` maps to the local ignored reference clone `references/worldwideview`. Adopt only the lightweight pipeline `seeder.mjs -> stream payload -> DataBus -> store -> Cesium primitive renderer -> animation loop`.
+- Realtime entity contract: `schemas/realtime-geo-entity.schema.json`; first seeder example is `realtime/seeders/pancreatic-centers/seeder.mjs`, emitting flat `RealtimeGeoEntity[]` from `data/pancreatic_centers/pancreatic_center_snapshot_2026-06-13.json`.
+- Realtime runtime boundary: `realtime/runtime/` contains dependency-free DataBus, WsClient, GlobeStore, camera presets, primitive projection, and animation loop so frontend implementation can stay aligned before Next.js/Cesium is selected.
+- Realtime validation commands: `node scripts/validate_realtime_seeders.mjs`, `node scripts/run_realtime_seeder.mjs --plugin pancreatic-centers --once`, and `node tests/realtime_runtime.test.mjs`.
+- Realtime boundary: do not import WorldWideView's full marketplace, edition system, dynamic CDN plugin loading, or model-LOD complexity during Phase 0.
+- Frontend architecture draft: `docs/frontend-architecture-draft.md` now answers whether a frontend draft exists. Existing design was distributed across dashboard/module docs; the new draft defines Next.js + TypeScript + Zustand + Cesium/Resium structure, WarRoomShell modules, state slices, DataBus flow, Supabase snapshot flow, and implementation phases.
+- Horizon demo reference: `references/horizon-workspace` is now the primary product/UI/static interaction reference. User said its current effect is satisfactory except animation and realtime updates. Use it for module set, visual language, city resources, risk radar, AI-MDT, forecast audit, report center, profile/config, elderly mode. Use WorldWideView only for realtime globe stream/animation/Cesium performance. Analysis doc: `docs/horizon-demo-reference-analysis.md`.
+- PRD/function/architecture review: `docs/prd-architecture-review-2026-06-14.md` records two-round review. Canonical quick demo is Horizon-style War Room shell plus Supabase read model plus realtime-compatible globe contract, not Daily Brief-only. Product follows Horizon, realtime follows WorldWideView, code structure stays modular. Fixed docs: product brief, MVP roadmap, index system, compliance boundaries, data model, dashboard spec, 3D module evaluation, and AI-MDT evaluation.
+- Review safety decisions: no naked surgery/patient-volume fields; use `VolumeMetric` with value, unit, period, scope, definition, source URL/type, verification status. Heat/flow equals public signal strength only. GMR is a claim-risk score, not clinical quality. WeChat defaults to metadata/links/tags/summaries, not full text. PIN/localStorage/RAG/API-key features are demo-sensitive and need hardening before production.
+- Global resource scope correction: `docs/design-review-global-resource-scope-2026-06-14.md` supersedes China-first resource scope. First pancreatic center resource module must be a global atlas: region -> country -> city -> center -> latest intelligence. China is early deep coverage, while US, Japan, and Europe appear from day one with broad coverage and explicit coverage-quality labels.
+- Active design-development implementation plan: `docs/plans/2026-06-14-global-resource-atlas-implementation.md`. Execute contract-first: design authority index, global atlas JSON contracts, fixture builder, Supabase read model, realtime region/country projection, configuration contracts, guardrails, frontend shell, and final documentation.
+- Task 1 implementation complete: `docs/design-doc-index.md` is now the design authority entrypoint. Commit `ab628f6 docs: add design authority index` includes README, design index, handoff, and progress updates. README now labels `design.md` as historical long-form background, not execution authority.
