@@ -27,3 +27,5 @@
 2026-06-14: Corrected pancreatic-center resource scope to global first; added `docs/design-review-global-resource-scope-2026-06-14.md` and updated core docs to require Region -> Country -> City -> Center -> Latest Intelligence drilldown.
 2026-06-14: Created and registered design-development implementation plan `docs/plans/2026-06-14-global-resource-atlas-implementation.md` for the global pancreatic treatment resource atlas.
 2026-06-14: Completed Task 1, Design Authority Index. Created `docs/design-doc-index.md`, updated README/progress/handoff source-of-truth language, passed spec and quality reviews, and committed `ab628f6`.
+2026-06-14: Completed Task 2, Global Atlas JSON Contracts. Added strict global atlas schema and tests; fixed quality issue where nested DTOs were under-typed and `VolumeMetric` was unsatisfiable; committed `2df80e0`.
+2026-06-14: Completed Task 3, Global Atlas Fixture Builder. Added builder, generated global atlas fixture, fixed coverage status misclassification for `unverified*` statuses, and committed `6948044`.

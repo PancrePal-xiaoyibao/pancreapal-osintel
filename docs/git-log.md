@@ -22,3 +22,7 @@
 - Suggested commit message for plan batch: `docs: add global resource atlas implementation plan`.
 - Commit `ab628f6` created for Task 1, Design Authority Index: `docs: add design authority index`.
 - Impact: `README.md`, `docs/design-doc-index.md`, `docs/handoff.md`, and `docs/progress.md` now make the global atlas source-of-truth explicit.
+- Commit `2df80e0` created for Task 2, Global Atlas JSON Contracts: `feat: add global atlas data contracts`.
+- Impact: added `schemas/global-resource-atlas.schema.json`, contract tests, and `data/global_resource_atlas/.gitkeep`.
+- Commit `6948044` created for Task 3, Global Atlas Fixture Builder: `feat: build global resource atlas fixture`.
+- Impact: added deterministic builder and generated `global_resource_atlas_2026-06-13.json` with 3 regions, 7 countries, 27 cities, and 48 centers.

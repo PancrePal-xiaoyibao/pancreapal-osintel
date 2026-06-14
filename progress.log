@@ -74,3 +74,16 @@
 - Verification: `rg -n "Global -> Region -> Country -> City -> Pancreatic Center" README.md docs/design-doc-index.md docs/handoff.md docs/progress.md`
 - Review: spec approved; quality blocker fixed by making README point to `docs/design-doc-index.md` and marking `design.md` as historical background.
 - Next: Task 2, Global Atlas JSON Contracts.
+2026-06-14: Task 2 Global Atlas JSON Contracts completed.
+- Commit: `2df80e0 feat: add global atlas data contracts`
+- Files: `schemas/global-resource-atlas.schema.json`, `tests/global_resource_contracts.test.mjs`, `data/global_resource_atlas/.gitkeep`
+- Verification: `node tests/global_resource_contracts.test.mjs`
+- Review: initial quality blocker fixed by adding typed properties, `$ref` chains, valid fixture sample, invalid nested-type sample, and strict `VolumeMetric` rejection of naked `surgeryVolume`.
+- Next: Task 3, Global Atlas Fixture Builder.
+2026-06-14: Task 3 Global Atlas Fixture Builder completed.
+- Commit: `6948044 feat: build global resource atlas fixture`
+- Files: `scripts/build_global_resource_atlas.mjs`, `data/global_resource_atlas/global_resource_atlas_2026-06-13.json`, `tests/global_resource_contracts.test.mjs`
+- Output: 3 regions, 7 countries, 27 cities, 48 centers.
+- Verification: `node scripts/build_global_resource_atlas.mjs`, `node tests/global_resource_contracts.test.mjs`, `node scripts/validate_realtime_seeders.mjs`, `node tests/realtime_runtime.test.mjs`
+- Review: quality blocker fixed by checking `unverified` before `verified`, downgrading source-empty centers to `seed`, and adding semantic invariants for evidence, metrics, and sorting.
+- Next: Task 4, Supabase Global Atlas Read Model.
