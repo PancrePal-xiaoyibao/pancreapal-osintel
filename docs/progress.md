@@ -52,18 +52,18 @@
 - Created the design-development implementation plan: `docs/plans/2026-06-14-global-resource-atlas-implementation.md`.
 - The plan defines stage gates from design authority index, global atlas contracts, fixture generation, Supabase read model, realtime projections, configuration contracts, frontend shell, guardrails, and final handoff.
 - Added `docs/design-doc-index.md` as the design authority index for implementers before global atlas contract or frontend work.
-- Completed Task 2 through Task 8 of the global atlas implementation plan, including contracts, fixture builder, Supabase read-model migration, realtime projections, configuration contracts, guardrails, and frontend shell.
+- Completed Task 1 through Task 8 of the global atlas implementation plan, including design authority indexing, contracts, fixture builder, Supabase read-model migration, realtime projections, configuration contracts, guardrails, and frontend shell.
 - Added the first Next.js App Router frontend shell for the global atlas.
 - The frontend shell renders the generated fixture as region cards, country rows, center count, coverage status, latest-intelligence count, and first center profile sample.
 - Frontend verification passed with guardrails, schema tests, realtime runtime test, Next typecheck, and Next production build.
+- Task 9 final integration verification passed on 2026-06-14.
 
 ## Current Phase
 
-Design-development implementation for Phase 1A: global pancreatic treatment resource atlas. Task 9 final integration documentation is next.
+Phase 1A global pancreatic treatment resource atlas design-development slice is implemented and verified locally.
 
 ## Next Work
 
-- Complete Task 9 final integration documentation for `docs/plans/2026-06-14-global-resource-atlas-implementation.md`.
 - Keep remote Supabase migration `009_global_resource_atlas_schema.sql` unapplied until explicit confirmation.
 - Wire the Next.js shell to Supabase read models after remote migration/application strategy is confirmed.
 - Add the first frontend runtime with DataBus, WebSocket stream client, and Cesium/Resium globe consuming `RealtimeGeoEntity[]`.

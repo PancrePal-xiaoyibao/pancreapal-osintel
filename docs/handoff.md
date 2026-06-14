@@ -135,3 +135,47 @@
 - Dependency note: `npm install` created `package-lock.json` and reported 2 moderate audit findings. Do not run `npm audit fix --force` without a separate dependency-risk review.
 - `.gitignore` now excludes `node_modules/`, `.next/`, and `tsconfig.tsbuildinfo`.
 - Next implementation should connect this shell to Supabase read models or add Cesium/Resium only after preserving the current source-safe `VolumeMetric` and latest-intelligence contracts.
+
+## Global Atlas Implementation Handoff
+
+- Current design-development slice covers:
+  - Design authority index: `docs/design-doc-index.md`.
+  - Global atlas contract: `schemas/global-resource-atlas.schema.json`.
+  - Generated fixture: `data/global_resource_atlas/global_resource_atlas_2026-06-13.json`.
+  - Fixture builder: `scripts/build_global_resource_atlas.mjs`.
+  - Supabase read-model migration: `supabase/migrations/009_global_resource_atlas_schema.sql`.
+  - Supabase read-model doc: `docs/supabase-global-resource-atlas.md`.
+  - Realtime projection: `realtime/seeders/pancreatic-centers/seeder.mjs`.
+  - Configuration contract: `schemas/app-configuration.schema.json` and `data/config/demo_app_config.json`.
+  - Guardrail: `scripts/validate_no_naked_volume_fields.mjs` and `npm run validate:guardrails`.
+  - Frontend shell: `app/`, `components/`, and `core/domain/globalResourceTypes.ts`.
+- Current fixture counts: 3 regions, 7 countries, 27 cities, 48 centers.
+- Current realtime seeder output: 85 render entities across region, country, city, and center levels.
+- Supabase status: migration `009_global_resource_atlas_schema.sql` exists locally but has not been applied to the hosted `pposintel` project. Apply it remotely only after explicit confirmation.
+- Frontend status: the App Router shell renders a static fixture read model. It is not yet connected to Supabase, websocket streams, or Cesium/Resium.
+- Source safety: all volume-like scale data must stay inside `VolumeMetric` with value, unit, period, scope, definition, source URLs, source type, verification status, and confidence.
+- Forbidden product-field names remain blocked in atlas JSON and app/components/core TypeScript:
+  - `surgeryVolume`
+  - `patientVolume`
+  - `annualPatients`
+  - `annualSurgeries`
+- Task 9 final verification gate:
+  - `node scripts/validate_realtime_seeders.mjs`
+  - `node tests/realtime_runtime.test.mjs`
+  - `node tests/global_resource_contracts.test.mjs`
+  - `node tests/app_configuration_contracts.test.mjs`
+  - `node scripts/validate_no_naked_volume_fields.mjs`
+  - `npm run build`
+- Final verification result on 2026-06-14: all Task 9 commands passed locally.
+- Final verification details:
+  - Realtime seeder validation emitted 85 entities.
+  - Realtime runtime test passed.
+  - Global resource contract schema test passed.
+  - App configuration contract test passed.
+  - Naked volume guardrail passed with 10 scanned files.
+  - Next production build passed and prerendered `/` plus `/_not-found`.
+- Next task should be selected explicitly from one of these tracks:
+  - Apply/test Supabase migration 009 on the hosted project after confirmation.
+  - Replace static fixture reads with Supabase read-model queries.
+  - Add Cesium/Resium globe runtime consuming `RealtimeGeoEntity[]`.
+  - Expand center evidence and latest-intelligence content beyond the current fixture.
